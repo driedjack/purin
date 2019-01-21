@@ -31,6 +31,7 @@
           await Expo.Font.loadAsync({
             Sarabun: require('../assets/fonts/Sarabun-Regular.ttf'),
             Dancing_script_bold: require('../assets/fonts/DancingScript-Bold.ttf'),
+            Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
           })
           this.isAppReady = true
         } catch (error) {
