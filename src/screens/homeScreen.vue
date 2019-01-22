@@ -49,7 +49,7 @@
         firebase.auth().onAuthStateChanged((user) => {
           if (user != null) {
             firebase.database().ref('/users/' + user.uid).once('value').then((snapshot) => {
-              this.navigation.navigate(snapshot.exists() ? 'Diary' : 'PregnantDay')
+              this.navigation.navigate(snapshot.exists() ? 'ChatList' : 'PregnantDay')
             })
           }
         })

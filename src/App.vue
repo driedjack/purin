@@ -10,14 +10,18 @@
   import HomeScreen from "./screens/homeScreen.vue"
   import PregnantDayScreen from "./screens/pregnantDayScreen.vue"
   import DiaryScreen from "./screens/diaryScreen.vue"
+  import ChatListScreen from "./screens/chatListScreen.vue"
+  import PrivateChatScreen from "./screens/privateChatScreen.vue"
 
   const AppNavigation = StackNavigator(
     {
       Home: HomeScreen,
+      ChatList: ChatListScreen,
+      PrivateChat: PrivateChatScreen,
       PregnantDay: PregnantDayScreen,
       Diary: DiaryScreen
     }, {
-      initialRouteName: 'Home',
+      initialRouteName: 'ChatList',
       headerMode: 'none'
     }
   )
