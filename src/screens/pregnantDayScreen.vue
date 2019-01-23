@@ -57,7 +57,7 @@
         firebase.database().ref('users/' + this.user.uid).set({
           pregnantDate: date
         })
-        this.navigation.navigate('Diary')
+        this.navigation.navigate('Main')
       }
     },
     created() {
