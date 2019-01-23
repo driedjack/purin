@@ -7,7 +7,7 @@
       </nb-body>
       <nb-right/>
     </nb-header>
-    <view :style="{flex: 1, padding: 12}">
+    <view v-if="loadCards" :style="{flex: 1, padding: 12}">
       <nb-deck-swiper
           :dataSource="cardItemsArr"
           :looping="isLoopingRequired"
@@ -24,21 +24,27 @@
 
   export default {
     data() {
-      // let user = firebase.auth().currentUser
-      // let day = firebase.database().refs(`users/${user.uid}/memos/Tue Jan 22 2019`).o
-
       return {
-        cardItemsArr: [
-          {
-            text: "Card One",
-            name: "One",
-            image: require('../../assets/images/purin.png')
-          },
-        ],
-        isLoopingRequired: false
+        user: firebase.auth().currentUser,
+        loadCards: false,
+        cardItemsArr: [],
+        isLoopingRequired: true
       }
     },
+    created() {
+      this.fetchCards()
+    },
     methods: {
+      fetchCards: async function() {
+        this.loadCards = false
+        await firebase.database().ref(`users/${this.user.uid}/memos`).once('value').then(snapshot => {
+          let cards = snapshot.val()
+          this.cardItemsArr = Object.keys(cards).map(date => {
+            return { name: date, text: cards[date].content.split('\\n').join('\n'), emoji: cards[date].emoji, image: `data:image/jpeg;base64,${cards[date].image}` }
+          })
+        })
+        this.loadCards = true
+      },
       handleCardRendering(item) {
         return <CardComponent item={item} />;
       }

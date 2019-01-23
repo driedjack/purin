@@ -5,7 +5,11 @@
       <nb-body>
         <nb-title>Diary</nb-title>
       </nb-body>
-      <nb-right/>
+      <nb-right>
+        <nb-button transparent :on-press="logout">
+          <nb-text>Thoát</nb-text>
+        </nb-button>
+      </nb-right>
     </nb-header>
     <nb-content>
       <nb-form>
@@ -19,7 +23,7 @@
         <nb-button rounded dark v-else :on-press="pickImage">
           <nb-text>Hình ảnh cho hôm nay</nb-text>
         </nb-button>
-        <nb-textarea :rowSpan="10" bordered placeholder="Hôm nay bạn cảm thấy thế nào?" v-model="content" />
+        <nb-textarea :rowSpan="8" bordered placeholder="Hôm nay bạn cảm thấy thế nào?" v-model="content" />
         <nb-grid>
           <nb-col>
             <nb-text>Cảm xúc cho hôm nay nhé~</nb-text>
@@ -70,10 +74,13 @@
   import { ImagePicker } from 'expo'
 
   export default {
-    props: {},
+    props: {
+      navigation: { type: Object }
+    },
     data() {
+      console.log(firebase.auth().currentUser)
       return {
-        today: (new Date()).toDateString(),
+        today: (new Date()).toISOString().substr(0, 10),
         user: firebase.auth().currentUser,
         pregnantDay: '',
         image: null,
@@ -97,6 +104,15 @@
       }
     },
     methods: {
+      logout() {
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+        }).catch(function(error) {
+          // An error happened.
+        });
+        console.log('out')
+        this.navigation.navigate('Home')
+      },
       fetchInfo() {
         firebase.database().ref(`users/${this.user.uid}`).once('value').then(snapshot => {
           this.pregnantDay = snapshot.val().pregnantDay
@@ -107,7 +123,8 @@
           mediaTypes: 'Images',
           allowsEditing: true,
           aspect: [4, 3],
-          base64: true
+          base64: true,
+          quality: 0.5
         })
         console.log(result)
         this.image = result.uri
