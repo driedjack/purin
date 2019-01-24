@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "660303380719",
+    "firebase_url": "https://purin-2a9a7.firebaseio.com",
+    "project_id": "purin-2a9a7",
+    "storage_bucket": "purin-2a9a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660303380719:android:5644c35932ab0742",
+        "android_client_info": {
+          "package_name": "com.driedjack.purin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660303380719-kss4trqm0rakghd3c885h8rl8j7a1rq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOwIl89Wc3E4ANojVQIpRAjk11o6ubH04"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
