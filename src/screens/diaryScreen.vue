@@ -61,7 +61,7 @@
             </nb-right>
           </nb-col>
         </nb-grid>
-        <nb-button rounded dark :on-press="saveDiary" class="fullwidth">
+        <nb-button rounded dark :on-press="saveDiary">
           <nb-text>Lưu nhật kí</nb-text>
         </nb-button>
       </nb-form>
@@ -161,6 +161,7 @@
             content: this.content,
             emoji: this.emoji
           });
+          alert('Đã đăng nhật ký thành công')
         }else{
           alert('Vui lòng nhập nội dung')
         }

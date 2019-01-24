@@ -1,6 +1,6 @@
 <template>
   <nb-container>
-    <nb-header>
+    <nb-header class="header">
       <nb-left/>
       <nb-body>
         <nb-title>Ký ức</nb-title>

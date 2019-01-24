@@ -2,7 +2,7 @@
   <nb-container>
     <nb-header>
       <nb-left/>
-      <nb-body>
+      <nb-body class="header">
         <nb-title>Dòng thời gian</nb-title>
       </nb-body>
       <nb-right/>
@@ -37,3 +37,8 @@
     }
   }
 </script>
+<style media="screen">
+  .header{
+    padding-top: 30px
+  }
+</style>

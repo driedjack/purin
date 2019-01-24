@@ -26,6 +26,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.purin.purin",
       "googleServicesFile": "./google-services.json",
     },
     "packagerOpts": {

@@ -1,6 +1,6 @@
 <template>
   <nb-container>
-    <nb-header>
+    <nb-header class="header">
       <nb-left/>
       <nb-body>
         <nb-title>Những người mẹ như bạn</nb-title>
@@ -43,3 +43,8 @@
     }
   }
 </script>
+<style media="screen">
+  .header{
+    margin-top: 30px
+  }
+</style>
