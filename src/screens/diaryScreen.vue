@@ -57,7 +57,7 @@
             </nb-right>
           </nb-col>
         </nb-grid>
-        <nb-button rounded dark :on-press="saveDiary">
+        <nb-button rounded dark :on-press="saveDiary" class="fullwidth">
           <nb-text>Lưu nhật kí</nb-text>
         </nb-button>
       </nb-form>
@@ -138,12 +138,15 @@
         this.radios[3].state = true;
       },
       saveDiary() {
-        console.log('enter')
-        firebase.database().ref(`users/${this.user.uid}/memos/${this.today}`).set({
-          image: this.source,
-          content: this.content,
-          emoji: this.emoji
-        });
+        if (this.content) {
+          firebase.database().ref(`users/${this.user.uid}/memos/${this.today}`).set({
+            image: this.source,
+            content: this.content,
+            emoji: this.emoji
+          });
+        }else{
+          alert('Vui lòng nhập nội dung')
+        }
       }
     }
   }
@@ -151,6 +154,7 @@
 
 <style>
   .header {
+    margin-top: 30px;
     background-color: black;
   }
 </style>
